@@ -1,0 +1,63 @@
+---
+config:
+    layout:elk
+---
+
+erDiagram
+
+    CUSTOMER ||--o{ BOOKING : makes
+    BOOKING ||--|{ EQUIPMENT : includes
+    EQUIPMENT ||--o{ MAINTENANCE : has
+    BOOKING ||--o| INVOICE : makes
+    DEPOT ||--o{ EQUIPMENT : stores
+    STAFF ||--o{ BOOKING : manages
+    STAFF ||--o{ MAINTENANCE : manages
+
+    CUSTOMER {
+        int CustomerID
+        string CustomerName
+        string PhoneNumber
+        string EmailAddress
+        string HomeAddress
+    }
+
+    STAFF {
+        int StaffID
+        string StaffName
+        string Department
+    }
+
+    DEPOT {
+        int DepotNumber
+        string DepotName
+        string Address
+    }
+
+    BOOKING {
+        int BookingID
+        int CustomerID
+        date HireStartDate
+        date HireEndDate
+        string BookingStatus
+    }
+
+    EQUIPMENT {
+        int EquipmentID
+        string EquipmentName
+        string EquipmentStatus
+    }
+
+    MAINTENANCE {
+        int MaintenanceID
+        date MaintenanceDate
+        string MaintenanceDescription
+        date CompletionDate
+        
+    }
+
+    INVOICE {
+        int InvoiceID
+        int BookingID
+        int HireCharge
+        date InvoiceDate
+    }
